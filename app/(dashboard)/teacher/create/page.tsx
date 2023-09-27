@@ -18,7 +18,7 @@ import { useForm } from "react-hook-form";
 import { useRouter } from 'next/navigation';
 import axios from 'axios';
 import toast from 'react-hot-toast'
-import Link from 'next/link'
+import Link from 'next/link';
 
 type Props = {}
 

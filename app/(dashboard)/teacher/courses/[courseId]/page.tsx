@@ -4,6 +4,7 @@ import { redirect } from 'next/navigation'
 import { db } from '@/lib/db'
 import IconBadge from '@/components/IconBadge'
 import { LayoutDashboard } from 'lucide-react'
+import TitleForm from './_components/TitleForm'
 
 type Props = {}
 
@@ -26,7 +27,7 @@ const CourseIdPage = async ({ params }: { params: { courseId: string } }) => {
   if (!course) {
     redirect("/")
   }
-  console.log(course)
+  // console.log(course)
 
   const requiredFields = [
     course.title,
@@ -55,6 +56,10 @@ const CourseIdPage = async ({ params }: { params: { courseId: string } }) => {
             <IconBadge size="default" icon={LayoutDashboard} />
             <h2 className='text-xl font-medium'>Customize your course</h2>
           </div>
+          <TitleForm
+            initialData = {course}
+            courseId = {course.id}
+          />
         </div>
       </div>
     </div>
