@@ -18,7 +18,6 @@ import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
 import { useRouter } from "next/navigation"
 import { ImageIcon, Pencil, Plus, PlusCircle } from "lucide-react"
-import { Textarea } from "@/components/ui/textarea"
 import { Course } from "@prisma/client"
 import { cn } from "@/lib/utils"
 import FileUpload from "@/components/FileUpload"
@@ -46,7 +45,6 @@ const ImageForm = ({ initialData, courseId }: ImageFormProps) => {
         }
     })
     const router = useRouter();
-    const { isSubmitting, isValid } = form.formState;
 
     const [isEditing, setIsEditing] = React.useState(false);
     const toggleEditing = () => {
@@ -56,13 +54,16 @@ const ImageForm = ({ initialData, courseId }: ImageFormProps) => {
     const onSubmit = async (values: z.infer<typeof formSchema>) => {
         try {
             // console.log(values);
+            console.log("Hi there")
             await axios.patch(`/api/courses/${courseId}`, values);
+            console.log("Hi there 2")
             toast.success("Course updated successfully!")
             toggleEditing()
             router.refresh();
 
         }
         catch (error) {
+            console.log(error);
             toast.error("Something went wrong!")
         }
     }
