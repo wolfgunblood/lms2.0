@@ -27,8 +27,8 @@ model Course {
 
   createdAt DateTime   @default(now())
   updateAt  DateTime   @updatedAt
-  Chapter   Chapter[]
-  Purchase  Purchase[]
+  chapters   Chapter[]
+  purchase  Purchase[]
 
   @@index([categoryId])
   @@fulltext([title])
